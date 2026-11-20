@@ -1,0 +1,40 @@
+/* =====================================================================
+   app.css — styles only the React version needs (navigation, 404 page).
+   Everything else is shared with the jQuery version.
+   ===================================================================== */
+
+.nav {
+    display: flex;
+    gap: var(--sp-1);
+    margin-right: auto;
+    margin-left: var(--sp-5);
+}
+
+.nav-link {
+    padding: var(--sp-2) var(--sp-3);
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    transition: background-color var(--dur), color var(--dur);
+}
+.nav-link:hover { background: var(--surface-2); color: var(--text); text-decoration: none; }
+.nav-link.active { background: var(--c-primary-soft); color: var(--c-primary); }
+
+@media (max-width: 640px) { .nav { display: none; } }
+
+.not-found {
+    display: grid;
+    justify-items: center;
+    gap: var(--sp-3);
+    padding: var(--sp-6);
+    text-align: center;
+}
+.not-found .code {
+    font-size: 4rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--c-primary), #8b5cf6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}

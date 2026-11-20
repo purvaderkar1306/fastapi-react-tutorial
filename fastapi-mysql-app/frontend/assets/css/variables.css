@@ -1,0 +1,101 @@
+/* =====================================================================
+   variables.css — design tokens (CSS custom properties)
+   Light theme by default, dark theme via [data-theme="dark"] or OS setting.
+   ===================================================================== */
+
+:root {
+    /* Brand & status colours */
+    --c-primary: #6366f1;
+    --c-primary-hover: #4f46e5;
+    --c-primary-soft: rgb(99 102 241 / 0.12);
+    --c-success: #10b981;
+    --c-success-soft: rgb(16 185 129 / 0.12);
+    --c-danger: #ef4444;
+    --c-danger-hover: #dc2626;
+    --c-danger-soft: rgb(239 68 68 / 0.12);
+    --c-warning: #f59e0b;
+    --c-warning-soft: rgb(245 158 11 / 0.14);
+    --c-info: #0ea5e9;
+    --c-info-soft: rgb(14 165 233 / 0.12);
+
+    /* Surfaces & text */
+    --bg: #f4f5fb;
+    --bg-gradient: radial-gradient(1200px 600px at 10% -10%, rgb(99 102 241 / 0.10), transparent 60%),
+                   radial-gradient(900px 500px at 110% 10%, rgb(139 92 246 / 0.08), transparent 60%);
+    --surface: #ffffff;
+    --surface-2: #f8f9fc;
+    --surface-glass: rgb(255 255 255 / 0.72);
+    --border: #e4e6ef;
+    --text: #1e2133;
+    --text-muted: #6b7088;
+    --overlay: rgb(15 17 30 / 0.55);
+
+    /* Typography */
+    --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --fs-xs: 0.75rem;
+    --fs-sm: 0.875rem;
+    --fs-md: 1rem;
+    --fs-lg: 1.125rem;
+    --fs-xl: clamp(1.5rem, 1.1rem + 1.5vw, 2rem);
+
+    /* Spacing, radius, shadow, motion */
+    --sp-1: 0.25rem;
+    --sp-2: 0.5rem;
+    --sp-3: 0.75rem;
+    --sp-4: 1rem;
+    --sp-5: 1.5rem;
+    --sp-6: 2rem;
+    --radius-sm: 8px;
+    --radius: 12px;
+    --radius-lg: 18px;
+    --radius-pill: 999px;
+    --shadow-sm: 0 1px 2px rgb(16 24 40 / 0.06);
+    --shadow: 0 4px 16px -4px rgb(16 24 40 / 0.10), 0 2px 4px -2px rgb(16 24 40 / 0.06);
+    --shadow-lg: 0 24px 48px -12px rgb(16 24 40 / 0.28);
+    --ring: 0 0 0 4px var(--c-primary-soft);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --dur: 220ms;
+
+    --container: 1180px;
+    --header-h: 64px;
+
+    color-scheme: light;
+}
+
+/* Dark theme: explicit choice */
+:root[data-theme="dark"] {
+    --bg: #0f1120;
+    --bg-gradient: radial-gradient(1200px 600px at 10% -10%, rgb(99 102 241 / 0.18), transparent 60%),
+                   radial-gradient(900px 500px at 110% 10%, rgb(139 92 246 / 0.14), transparent 60%);
+    --surface: #181b2e;
+    --surface-2: #1f2338;
+    --surface-glass: rgb(24 27 46 / 0.72);
+    --border: #2b3050;
+    --text: #e8eaf6;
+    --text-muted: #9aa0bf;
+    --overlay: rgb(5 6 14 / 0.7);
+    --c-primary-soft: rgb(99 102 241 / 0.22);
+    --shadow: 0 4px 16px -4px rgb(0 0 0 / 0.45);
+    --shadow-lg: 0 24px 48px -12px rgb(0 0 0 / 0.65);
+    color-scheme: dark;
+}
+
+/* Dark theme: follow the OS unless the user chose light */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg: #0f1120;
+        --bg-gradient: radial-gradient(1200px 600px at 10% -10%, rgb(99 102 241 / 0.18), transparent 60%),
+                       radial-gradient(900px 500px at 110% 10%, rgb(139 92 246 / 0.14), transparent 60%);
+        --surface: #181b2e;
+        --surface-2: #1f2338;
+        --surface-glass: rgb(24 27 46 / 0.72);
+        --border: #2b3050;
+        --text: #e8eaf6;
+        --text-muted: #9aa0bf;
+        --overlay: rgb(5 6 14 / 0.7);
+        --c-primary-soft: rgb(99 102 241 / 0.22);
+        --shadow: 0 4px 16px -4px rgb(0 0 0 / 0.45);
+        --shadow-lg: 0 24px 48px -12px rgb(0 0 0 / 0.65);
+        color-scheme: dark;
+    }
+}

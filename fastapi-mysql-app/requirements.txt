@@ -1,0 +1,6 @@
+fastapi[standard]>=0.115
+sqlalchemy>=2.0
+pymysql>=1.1
+cryptography>=42      # needed by PyMySQL for MySQL 8's default login method (caching_sha2_password)
+pydantic-settings>=2.0
+email-validator>=2.0

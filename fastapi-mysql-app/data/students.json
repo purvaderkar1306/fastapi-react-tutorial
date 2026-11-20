@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Asha Patil",
+    "age": 20,
+    "email": "asha.patil@example.com",
+    "course": "Computer Science"
+  },
+  {
+    "name": "Rahul Sharma",
+    "age": 22,
+    "email": "rahul.sharma@example.com",
+    "course": "Mechanical Engineering"
+  },
+  {
+    "name": "Priya Deshmukh",
+    "age": 19,
+    "email": "priya.deshmukh@example.com",
+    "course": "Mathematics"
+  },
+  {
+    "name": "Arjun Mehta",
+    "age": 21,
+    "email": "arjun.mehta@example.com",
+    "course": "Physics"
+  },
+  {
+    "name": "Sneha Kulkarni",
+    "age": 23,
+    "email": "sneha.kulkarni@example.com",
+    "course": "Electronics"
+  }
+]

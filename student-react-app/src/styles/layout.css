@@ -1,0 +1,81 @@
+/* =====================================================================
+   layout.css — header, page structure, grids
+   ===================================================================== */
+
+.container {
+    width: 100%;
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: var(--sp-4);
+}
+
+/* ---------- Header (sticky, glass effect) ---------- */
+.app-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    height: var(--header-h);
+    background: var(--surface-glass);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-4);
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-2);
+    color: var(--text);
+    font-size: var(--fs-lg);
+}
+.brand:hover { text-decoration: none; }
+.brand strong { color: var(--c-primary); }
+.brand-logo { width: 32px; height: 32px; }
+
+.header-actions { display: flex; align-items: center; gap: var(--sp-2); }
+
+/* ---------- Main ---------- */
+.main {
+    flex: 1;
+    padding-block: var(--sp-6);
+    display: grid;
+    gap: var(--sp-5);
+    animation: fade-up 500ms var(--ease) both;
+}
+
+.page-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--sp-4);
+}
+.page-head p { margin-top: var(--sp-1); }
+
+/* ---------- Stats grid (auto-fit responsive) ---------- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--sp-4);
+}
+
+/* ---------- Footer ---------- */
+.app-footer {
+    padding-block: var(--sp-5);
+    font-size: var(--fs-sm);
+    text-align: center;
+    border-top: 1px solid var(--border);
+}
+
+@keyframes fade-up {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: none; }
+}

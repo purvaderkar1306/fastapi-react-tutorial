@@ -1,0 +1,164 @@
+/* =====================================================================
+   modal.css — modal windows and modal-based alerts
+   Open state is toggled by modal.js with the .show class.
+   ===================================================================== */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: grid;
+    place-items: center;
+    padding: var(--sp-4);
+}
+
+/* Stacked dialogs (alert over a form modal) sit higher */
+.modal-alert { z-index: 1100; }
+
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: var(--overlay);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity var(--dur) var(--ease);
+}
+
+.modal-dialog {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    max-height: calc(100vh - 2 * var(--sp-4));
+    display: flex;
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+    transition: opacity var(--dur) var(--ease), transform 320ms var(--ease);
+}
+.modal-sm { max-width: 420px; }
+
+.modal-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+/* --- open state --- */
+.modal.show .modal-backdrop { opacity: 1; }
+.modal.show .modal-dialog { opacity: 1; transform: none; }
+
+/* Shake when the user clicks the backdrop of a "static" modal */
+.modal.shake .modal-dialog { animation: shake 400ms var(--ease); }
+@keyframes shake {
+    0%, 100% { transform: none; }
+    20%, 60% { transform: translateX(-8px); }
+    40%, 80% { transform: translateX(8px); }
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-3);
+    padding: var(--sp-4) var(--sp-5);
+    border-bottom: 1px solid var(--border);
+}
+
+.modal-close {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color var(--dur), color var(--dur), transform var(--dur) var(--ease);
+}
+.modal-close:hover { background: var(--surface-2); color: var(--text); transform: rotate(90deg); }
+
+.modal-body {
+    padding: var(--sp-5);
+    overflow-y: auto;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--sp-2);
+    padding: var(--sp-4) var(--sp-5);
+    background: var(--surface-2);
+    border-top: 1px solid var(--border);
+}
+.modal-footer-center { justify-content: center; }
+.modal-footer-center .btn { min-width: 110px; }
+
+/* ---------- Alert modal ---------- */
+.alert-icon {
+    --tone: var(--c-info);
+    --tone-soft: var(--c-info-soft);
+    display: grid;
+    place-items: center;
+    width: 72px;
+    height: 72px;
+    margin: var(--sp-2) auto var(--sp-4);
+    border-radius: 50%;
+    color: var(--tone);
+    background: var(--tone-soft);
+    animation: pop 420ms var(--ease) both;
+}
+.alert-icon .icon { width: 36px; height: 36px; stroke-width: 2.4; }
+.alert-icon.success { --tone: var(--c-success); --tone-soft: var(--c-success-soft); }
+.alert-icon.error   { --tone: var(--c-danger);  --tone-soft: var(--c-danger-soft); }
+.alert-icon.warning { --tone: var(--c-warning); --tone-soft: var(--c-warning-soft); }
+.alert-icon.info    { --tone: var(--c-info);    --tone-soft: var(--c-info-soft); }
+
+/* Animated check-mark stroke for success */
+.alert-icon.success .icon path {
+    stroke-dasharray: 30;
+    stroke-dashoffset: 30;
+    animation: draw 500ms 150ms var(--ease) forwards;
+}
+
+.alert-title { font-size: 1.25rem; margin-bottom: var(--sp-2); }
+.alert-message { color: var(--text-muted); font-size: var(--fs-sm); }
+.alert-message ul { text-align: left; margin-top: var(--sp-2); padding-left: var(--sp-5); }
+.alert-message strong { color: var(--text); }
+
+@keyframes pop {
+    0%   { transform: scale(0.4); opacity: 0; }
+    60%  { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+}
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+/* ---------- Profile (view modal) ---------- */
+.profile {
+    display: grid;
+    justify-items: center;
+    gap: var(--sp-2);
+    margin-bottom: var(--sp-5);
+    text-align: center;
+}
+.profile h3 { margin-top: var(--sp-2); font-size: 1.25rem; }
+
+.detail-list { display: grid; gap: var(--sp-2); }
+.detail-list > div {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--sp-4);
+    padding: var(--sp-3) var(--sp-4);
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    font-size: var(--fs-sm);
+}
+.detail-list dt { color: var(--text-muted); font-weight: 500; }
+.detail-list dd { font-weight: 600; word-break: break-all; text-align: right; }

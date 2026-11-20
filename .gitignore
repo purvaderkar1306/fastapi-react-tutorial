@@ -1,0 +1,23 @@
+# Each project folder also has its own .gitignore.
+# These rules apply to the whole repository.
+
+# Secrets (database passwords etc.)
+.env
+.env.*
+!.env.example
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Node / React
+node_modules/
+dist/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
