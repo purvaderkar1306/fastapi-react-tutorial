@@ -5,7 +5,7 @@ export default function NotFoundPage() {
     <section className="card not-found">
       <span className="code">404</span>
       <h1>Page not found</h1>
-      <p className="muted">There is no page at this address.</p>
+      <p className="muted">No page found at this address.</p>
       <Link to="/students" className="btn btn-primary">
         Go to Students
       </Link>
